@@ -51,7 +51,7 @@ import Header from './components/Header.vue'
 import Highscore from './components/Highscore.vue'
 import Footer from './components/Footer.vue'
 
-const ownerEmail = 'admin@mail.com'
+const ownerEmail = 'pi.eko013@gmail.com'
 
 const user = ref(null)
 const authChecked = ref(false)

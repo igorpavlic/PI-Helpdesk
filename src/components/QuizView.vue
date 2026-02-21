@@ -12,7 +12,7 @@
       </div>
     </div>
     <div>
-      <input v-model="userAnswer" placeholder="Write here" />
+      <input v-model="userAnswer" placeholder="Write here" @keyup.enter="handleEnterPress" ref="answerInput"/>
       <button @click="checkAnswer" :disabled="isLoading">Check</button>
       <p>Points: {{ score }}</p>
     </div>
@@ -33,6 +33,7 @@ const userAnswer = ref('')
 const result = ref('')
 const score = ref(0)
 const isLoading = ref(false)
+const answerInput = ref(null)
 
 const props = defineProps({
   wordList: Array,
@@ -61,6 +62,12 @@ const loadNewImage = async () => {
   userAnswer.value = ''
   result.value = ''
   isLoading.value = false
+}
+
+const handleEnterPress = () => {
+  if (!isLoading.value && userAnswer.value.trim()) {
+    checkAnswer()
+  }
 }
 
 const checkAnswer = async () => {
